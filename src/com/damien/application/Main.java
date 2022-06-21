@@ -1,12 +1,22 @@
 package com.damien.application;
 
+import com.damien.fenetres.FenetreSaisieVehicule;
 import com.damien.utils.CsvFile;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
-        CsvFile.lireFichierCsv();
-        //JFrame fenetreSaisieInfos = new FenetreSaisieInfos();
+    public static void main(String[] args) {
+//        try {
+//            CsvFile.lireFichierCsv();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        try {
+            new FenetreSaisieVehicule();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //new FenetreSaisieInfos();
     }
 }
