@@ -10,8 +10,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Fenetre resultat.
+ */
 public class FenetreResultat extends JFrame implements ActionListener {
 
+    /**
+     * Instantiates a new Fenetre resultat.
+     *
+     * @param personne the personne
+     */
     public FenetreResultat(Personne personne) {
         super("Résultat de la requête");
 

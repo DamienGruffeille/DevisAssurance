@@ -8,9 +8,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Fenetre erreur.
+ */
 public class FenetreErreur extends JFrame implements ActionListener {
+    /**
+     * The Btn ok.
+     */
     JButton btnOK = new JButton("OK");
 
+    /**
+     * Instantiates a new Fenetre erreur.
+     *
+     * @param message the message
+     */
     public FenetreErreur(String message) {
         JLabel info = new JLabel(message);
 

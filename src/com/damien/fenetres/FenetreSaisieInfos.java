@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 
 import static java.awt.GridBagConstraints.REMAINDER;
 
+/**
+ * The type Fenetre saisie infos.
+ */
 public class FenetreSaisieInfos extends JFrame implements ActionListener {
     private static final String[] LISTE_NB_ACCIDENTS = {"1", "2", "3+"};
     private static String jeuneCond = "Non";
@@ -32,6 +35,9 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
     private JButton btnOk = new JButton("OK");
     private JButton btnEffacer = new JButton("Effacer");
 
+    /**
+     * Instantiates a new Fenetre saisie infos.
+     */
     public FenetreSaisieInfos() {
         super("Infos générales");
 
@@ -160,6 +166,11 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    /**
+     * Gets jeune cond.
+     *
+     * @return the jeune cond
+     */
     public static String getJeuneCond() {
         return jeuneCond;
     }

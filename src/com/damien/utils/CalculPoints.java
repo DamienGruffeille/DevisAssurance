@@ -3,6 +3,9 @@ package com.damien.utils;
 import com.damien.entites.Personne;
 import com.damien.fenetres.FenetreSaisieInfos;
 
+/**
+ * The type Calcul points.
+ */
 public class CalculPoints {
 
     private static int points;
@@ -10,6 +13,12 @@ public class CalculPoints {
     private CalculPoints() {
     }
 
+    /**
+     * Calcul points int.
+     *
+     * @param personne the personne
+     * @return the int
+     */
     public static int calculPoints(Personne personne) {
         points = 0;
         if (personne.getNbAccidents().equals("3+")) {
