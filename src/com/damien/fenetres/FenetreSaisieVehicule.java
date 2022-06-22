@@ -11,11 +11,21 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 
-public class FenetreSaisieVehicule extends JFrame implements ActionListener, ItemListener {
+public class FenetreSaisieVehicule extends JFrame implements ActionListener {
     // Création d'un tableau de String pour cbx de la Frame
     private String[] listeMarques = new String[CsvFile.getListeMarques().size()];
     private String[] listeModeles = new String[CsvFile.getListeModeles().size()];
+    private JComboBox<String> cbxModele;
 
+    private JLabel lblPuissance;
+
+    public JLabel getLblPuissance() {
+        return lblPuissance;
+    }
+
+    public void setLblPuissance(JLabel lblPuissance) {
+        this.lblPuissance = lblPuissance;
+    }
 
     public FenetreSaisieVehicule() throws IOException {
         super ("Sélection véhicule");
@@ -32,15 +42,15 @@ public class FenetreSaisieVehicule extends JFrame implements ActionListener, Ite
 
         JLabel lblMarque = new JLabel("Marque : ");
         JLabel lblModele = new JLabel("Modèle : ");
-        JLabel lblPuissance = new JLabel("Puissance : CV");
+        lblPuissance = new JLabel("Puissance : ");
 
         JComboBox<String> cbxMarque = new JComboBox<>(listeMarques);
-        cbxMarque.addItemListener(this);
-        JComboBox<String> cbxModele = new JComboBox<>(listeModeles);
-        cbxModele.addItemListener(this);
+        //cbxMarque.addItemListener(this);
+        cbxModele = new JComboBox<>(listeModeles);
+        cbxModele.addActionListener(this);
 
         JButton btnOK = new JButton("OK");
-        btnOK.setEnabled(false);
+        //btnOK.setEnabled(false);
         btnOK.addActionListener(this);
 
         JPanel pan1 = new JPanel(new GridLayout(3,2,5,5));
@@ -68,14 +78,20 @@ public class FenetreSaisieVehicule extends JFrame implements ActionListener, Ite
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == "btnOK"){
-
+        if(e.getSource() == cbxModele){
+            System.out.println("choix : " + cbxModele.getSelectedItem().toString());
+            lblPuissance.setText("Puissance : " + CsvFile.getPuissance().get(cbxModele.getSelectedItem()) + " CV");
         }
 
     }
 
-    @Override
-    public void itemStateChanged(ItemEvent e) {
-//        Object obj = cbxMarque.getItem();
-    }
+//    @Override
+//    public void itemStateChanged(ItemEvent e) {
+//        //TODO dégriser btnOK lorsque les cbx ne sont plus sur "Marques" et "Modèles"
+//        Object obj = e.getItem();
+//        String selection = (String) obj;
+//
+//            System.out.println("choix : " + selection);
+//
+//    }
 }
