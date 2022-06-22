@@ -2,11 +2,13 @@ package com.damien.fenetres;
 
 import com.damien.entites.Personne;
 import com.damien.utils.CalculPoints;
+import com.damien.utils.CsvFile;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import static java.awt.GridBagConstraints.REMAINDER;
 
@@ -228,7 +230,13 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
 
             String message = "Cette personne n'est pas assurable";
             if (CalculPoints.calculPoints(personne) >= 0) {
-                JFrame fenetreResultat = new FenetreResultat(personne);
+                try {
+                    CsvFile.lireFichierCsv();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                new FenetreSaisieVehicule(personne);
+
             } else {
                 JFrame fenetreerreur = new FenetreErreur(message);
             }

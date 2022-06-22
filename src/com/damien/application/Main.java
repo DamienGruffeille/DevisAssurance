@@ -1,5 +1,6 @@
 package com.damien.application;
 
+import com.damien.entites.Personne;
 import com.damien.fenetres.FenetreSaisieInfos;
 import com.damien.fenetres.FenetreSaisieVehicule;
 import com.damien.utils.CsvFile;
@@ -16,16 +17,12 @@ public class Main {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        try {
-            CsvFile.lireFichierCsv();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            new FenetreSaisieVehicule();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        //new FenetreSaisieInfos();
+//        try {
+//            CsvFile.lireFichierCsv();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        new FenetreSaisieVehicule();
+        new FenetreSaisieInfos();
     }
 }
