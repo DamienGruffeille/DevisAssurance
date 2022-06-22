@@ -216,11 +216,12 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
                     bonusFid);
 
             String message = "Cette personne n'est pas assurable";
-            if (CalculPoints.calculPoints() >= 0) {
-                JFrame fenetreResultat = new FenetreResultat();
+            if (CalculPoints.calculPoints(personne) >= 0) {
+                JFrame fenetreResultat = new FenetreResultat(personne);
             } else {
                 JFrame fenetreerreur = new FenetreErreur(message);
             }
+            // TODO enregistrement de la personne dans fichier csv
 
         }
 

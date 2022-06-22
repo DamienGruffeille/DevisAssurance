@@ -7,28 +7,41 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 
-public class FenetreSaisieVehicule extends JFrame implements ActionListener {
+public class FenetreSaisieVehicule extends JFrame implements ActionListener, ItemListener {
+    // Création d'un tableau de String pour cbx de la Frame
+    private String[] listeMarques = new String[CsvFile.getListeMarques().size()];
+    private String[] listeModeles = new String[CsvFile.getListeModeles().size()];
 
-    String[] listeMarques = new String[CsvFile.getListe().size()];
-
-    private void transformationArrayListEnArray() throws IOException {
-        for (int i = 0; i < listeMarques.length; i++) {
-            listeMarques[i] = CsvFile.getListe().get(i);
-        }
-    }
 
     public FenetreSaisieVehicule() throws IOException {
         super ("Sélection véhicule");
+
+        // Transformation de l'ArrayList en tableau de String pour affichage dans cbx
+        for (int i = 0; i < listeMarques.length; i++) {
+            listeMarques[i] = CsvFile.getListeMarques().get(i);
+            System.out.println(listeMarques[i]);
+        }
+        for (int i = 0; i < listeModeles.length; i++) {
+            listeModeles[i] = CsvFile.getListeModeles().get(i);
+            System.out.println(listeModeles[i]);
+        }
+
         JLabel lblMarque = new JLabel("Marque : ");
         JLabel lblModele = new JLabel("Modèle : ");
         JLabel lblPuissance = new JLabel("Puissance : CV");
 
         JComboBox<String> cbxMarque = new JComboBox<>(listeMarques);
-        JComboBox<String> cbxModele = new JComboBox<>();
+        cbxMarque.addItemListener(this);
+        JComboBox<String> cbxModele = new JComboBox<>(listeModeles);
+        cbxModele.addItemListener(this);
 
         JButton btnOK = new JButton("OK");
+        btnOK.setEnabled(false);
+        btnOK.addActionListener(this);
 
         JPanel pan1 = new JPanel(new GridLayout(3,2,5,5));
         pan1.setBorder(new EmptyBorder(20,20,20,20));
@@ -55,6 +68,14 @@ public class FenetreSaisieVehicule extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == "btnOK"){
 
+        }
+
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+//        Object obj = cbxMarque.getItem();
     }
 }

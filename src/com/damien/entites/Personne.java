@@ -1,71 +1,91 @@
 package com.damien.entites;
 
 public class Personne {
-    private static String nom;
-    private static String prenom;
-    private static int age;
-    private static String jeuneCond;
-    private static String nbAccidents;
-    private static String fidelite;
+    private String nom;
+    private String prenom;
+    private int age;
+    private String jeuneCond;
+    private String nbAccidents;
+    private String fidelite;
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    private String statut = "Prospect";
 
     private Personne() {
         throw new IllegalStateException("Utility Class");
     }
 
-    public Personne(String nom, String prenom, int age, String jeuneCond, String nbAccidents, String bonusFid) {
+    public Personne(String nom, String prenom, int age, String jeuneCond, String nbAccidents, String bonusFid, String statut) {
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.jeuneCond = jeuneCond;
         this.nbAccidents = nbAccidents;
         this.fidelite = bonusFid;
+        this.statut = statut;
     }
 
-    public static String getNom() {
+    public Personne(String nom, String prenom, int age, String jeuneCond, String nbAccidents, String fidelite) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.age = age;
+        this.jeuneCond = jeuneCond;
+        this.nbAccidents = nbAccidents;
+        this.fidelite = fidelite;
+    }
+
+    public String getNom() {
         return nom;
     }
 
-    public static void setNom(String nom) {
-        Personne.nom = nom;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public static String getPrenom() {
+    public String getPrenom() {
         return prenom;
     }
 
-    public static void setPrenom(String prenom) {
-        Personne.prenom = prenom;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
-    public static int getAge() {
+    public int getAge() {
         return age;
     }
 
-    public static void setAge(int age) {
-        Personne.age = age;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public static String getJeunecond() {
+    public String getJeunecond() {
         return jeuneCond;
     }
 
-    public static void setJeunecond(String jeuneCond) {
-        Personne.jeuneCond = jeuneCond;
+    public void setJeunecond(String jeuneCond) {
+        this.jeuneCond = jeuneCond;
     }
 
-    public static String getNbAccidents() {
+    public String getNbAccidents() {
         return nbAccidents;
     }
 
-    public static void setNbAccidents(String nbAccidents) {
-        Personne.nbAccidents = nbAccidents;
+    public void setNbAccidents(String nbAccidents) {
+        this.nbAccidents = nbAccidents;
     }
 
-    public static String getFidelite() {
+    public  String getFidelite() {
         return fidelite;
     }
 
-    public static void setFidelite(String fidelite) {
-        Personne.fidelite = fidelite;
+    public void setFidelite(String fidelite) {
+        this.fidelite = fidelite;
     }
 }

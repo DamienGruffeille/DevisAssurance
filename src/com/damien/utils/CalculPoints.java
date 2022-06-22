@@ -1,9 +1,7 @@
 package com.damien.utils;
 
+import com.damien.entites.Personne;
 import com.damien.fenetres.FenetreSaisieInfos;
-
-import static com.damien.entites.Personne.getAge;
-import static com.damien.entites.Personne.getNbAccidents;
 
 public class CalculPoints {
 
@@ -12,19 +10,19 @@ public class CalculPoints {
     private CalculPoints() {
     }
 
-    public static int calculPoints() {
+    public static int calculPoints(Personne personne) {
         points = 0;
-        if (getNbAccidents().equals("3+")) {
+        if (personne.getNbAccidents().equals("3+")) {
             points = -1;
         } else {
-            if (getAge() >= 25) {
+            if (personne.getAge() >= 25) {
                 points++;
             }
 
             if (FenetreSaisieInfos.getJeuneCond().equals("Non")) {
                 points++;
             }
-            points -= Integer.parseInt(getNbAccidents());
+            points -= Integer.parseInt(personne.getNbAccidents());
         }
         System.out.println("Nombre de points : " + points);
         return points;

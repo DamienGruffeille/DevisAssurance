@@ -11,16 +11,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FenetreResultat extends JFrame implements ActionListener {
-    private JLabel lblIdentite1 = new JLabel("Client : " + Personne.getNom() + " " + Personne.getPrenom());
-    private JLabel lblAge = new JLabel("Age : " + Personne.getAge() + " ans");
-    private JLabel lblJeuneCond = new JLabel("Jeune Conducteur : " + Personne.getJeunecond());
-    private JLabel lblAccidents = new JLabel("Nombre d'accidents : " + Personne.getNbAccidents());
-    private JLabel lblFid = new JLabel("Eligible aux 10% de réduction : " + Personne.getFidelite());
-    private JButton btnDevis = new JButton("Faire un devis");
-    private JButton btnAnnuler = new JButton("Annuler");
 
-    public FenetreResultat() {
+    public FenetreResultat(Personne personne) {
         super("Résultat de la requête");
+
+        JLabel lblIdentite1 = new JLabel("Client : " + personne.getNom() + " " + personne.getPrenom());
+        JLabel lblAge = new JLabel("Age : " + personne.getAge() + " ans");
+        JLabel lblJeuneCond = new JLabel("Jeune Conducteur : " + personne.getJeunecond());
+        JLabel lblAccidents = new JLabel("Nombre d'accidents : " + personne.getNbAccidents());
+        JLabel lblFid = new JLabel("Eligible aux 10% de réduction : " + personne.getFidelite());
+        JButton btnDevis = new JButton("Faire un devis");
+        JButton btnAnnuler = new JButton("Annuler");
 
         // Panneau pour affichage des informations
         JPanel pan1 = new JPanel(new GridLayout(5, 1));
