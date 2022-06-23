@@ -1,5 +1,6 @@
 package com.damien.application;
 
+import com.damien.fenetres.FenetrePrincipale;
 import com.damien.fenetres.FenetreSaisieInfos;
 
 import java.io.BufferedWriter;
@@ -19,6 +20,6 @@ public class Main {
     public static void main(String[] args) {
 
 
-        new FenetreSaisieInfos();
+        new FenetrePrincipale();
     }
 }

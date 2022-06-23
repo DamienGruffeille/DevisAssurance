@@ -164,7 +164,7 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
         // Définition des caractéristiques du frame
         this.pack();
         this.setSize(400, 300);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

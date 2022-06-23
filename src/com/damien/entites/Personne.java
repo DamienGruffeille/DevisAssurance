@@ -47,8 +47,8 @@ public class Personne {
      * @param statut      the statut
      */
     public Personne(String nom, String prenom, int age, String jeuneCond, String nbAccidents, String bonusFid, String statut) {
-        this.nom = nom;
-        this.prenom = prenom;
+        setNom(nom);
+        setPrenom(prenom);
         this.age = age;
         this.jeuneCond = jeuneCond;
         this.nbAccidents = nbAccidents;
@@ -67,8 +67,8 @@ public class Personne {
      * @param fidelite    the fidelite
      */
     public Personne(String nom, String prenom, int age, String jeuneCond, String nbAccidents, String fidelite) {
-        this.nom = nom;
-        this.prenom = prenom;
+        setNom(nom);
+        setPrenom(prenom);
         this.age = age;
         this.jeuneCond = jeuneCond;
         this.nbAccidents = nbAccidents;
@@ -90,7 +90,7 @@ public class Personne {
      * @param nom the nom
      */
     public void setNom(String nom) {
-        this.nom = nom;
+        this.nom = nom.trim().toUpperCase();
     }
 
     /**
@@ -108,7 +108,7 @@ public class Personne {
      * @param prenom the prenom
      */
     public void setPrenom(String prenom) {
-        this.prenom = prenom;
+        this.prenom = prenom.trim().toUpperCase();
     }
 
     /**
