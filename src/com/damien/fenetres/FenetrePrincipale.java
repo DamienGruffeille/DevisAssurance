@@ -1,6 +1,6 @@
 package com.damien.fenetres;
 
-import com.damien.utils.fichierClient;
+import com.damien.utils.FichierClient;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,7 +42,7 @@ public class FenetrePrincipale extends JFrame implements ActionListener {
         devis.addActionListener((event -> new FenetreSaisieInfos()));
         pan2.add(devis);
         listeClients.addActionListener(
-                (event -> fichierClient.lireFichierClient()));
+                (event -> FichierClient.lireFichierClient()));
         pan2.add(listeClients);
 
         // Ajout des panels au frame
