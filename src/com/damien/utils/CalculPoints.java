@@ -8,7 +8,6 @@ import com.damien.fenetres.FenetreSaisieInfos;
  */
 public class CalculPoints {
 
-    private static int points;
 
     private CalculPoints() {
     }
@@ -20,7 +19,7 @@ public class CalculPoints {
      * @return the int
      */
     public static int calculPoints(Personne personne) {
-        points = 0;
+        int points = 0;
         if (personne.getNbAccidents().equals("3+")) {
             points = -1;
         } else {
@@ -33,7 +32,6 @@ public class CalculPoints {
             }
             points -= Integer.parseInt(personne.getNbAccidents());
         }
-        System.out.println("Nombre de points : " + points);
         return points;
     }
 }

@@ -17,6 +17,9 @@ public class CsvFile {
     // HashMap permettant de récupérer la puissance d'un modèle sélectionné
     private static HashMap<String, String> puissance = new HashMap<>();
 
+    private CsvFile() {
+    }
+
     /**
      * Gets liste marques.
      *

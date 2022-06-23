@@ -14,10 +14,11 @@ import java.awt.event.ActionListener;
  * The type Fenetre resultat.
  */
 public class FenetreResultat extends JFrame implements ActionListener {
-    private final int PRIX_CV = 50;
-    private final double TAUX_REDUC = 0.1;
     private int tarif;
     private double reduc;
+    private static final int PRIX_CV = 50;
+    private static final double TAUX_REDUC = 0.1;
+    private Personne personne;
     /**
      * Instantiates a new Fenetre resultat.
      *
@@ -26,6 +27,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
     public FenetreResultat(Personne personne, String marqueVeh, String modeleVeh, int puissance) {
         super("Résultat de la requête");
 
+        this.personne = personne;
         tarif = PRIX_CV * puissance;
 
         if(personne.getFidelite().equals("Oui")){
@@ -43,13 +45,11 @@ public class FenetreResultat extends JFrame implements ActionListener {
         JLabel lblModeleVeh = new JLabel("Modèle du véhicule : " + modeleVeh);
         JLabel lblTarifAss = new JLabel("Tarif de l'assurance : " + tarif + " €");
         JLabel lblReduc    = new JLabel("Montant de la réduction fidélité : " + reduc + " €");
-        JButton btnDevis = new JButton("Faire un devis");
+        JButton btnSouscrire = new JButton("Souscrire");
         JButton btnAnnuler = new JButton("Annuler");
 
         // Panneau pour affichage des informations
         JPanel pan1 = new JPanel(new GridLayout(11, 1));
-        // TODO ajout de la possibilite de sélectionner une marque, un modèle de véhicule
-        // TODO Cette sélection permettra de définir auto le puissance CV
         pan1.add(lblIdentite1);
         pan1.add(lblAge);
         pan1.add(lblJeuneCond);
@@ -65,8 +65,12 @@ public class FenetreResultat extends JFrame implements ActionListener {
         // Panneau pour les boutons
 
         JPanel pan2 = new JPanel(new GridLayout(1, 2));
-        pan2.add(btnDevis);
+        pan2.add(btnSouscrire);
+        // J'ajoute un listener qui appelle la méthode définissant les actions à réaliser
+        btnSouscrire.addActionListener(e -> btnSouscrireListener(e));
         pan2.add(btnAnnuler);
+        // Listener permettant de fermer la fenêtre, et sélectionner un autre véhicule
+        btnAnnuler.addActionListener((event) -> this.dispose());
 
         // Ajout des panels au frame
         this.setLayout(new BorderLayout());
@@ -81,9 +85,14 @@ public class FenetreResultat extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    private void btnSouscrireListener (ActionEvent event){
+        personne.setStatut("Client");
+        System.out.println(personne.getStatut());
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        //TODO action des boutons
     }
 }
 

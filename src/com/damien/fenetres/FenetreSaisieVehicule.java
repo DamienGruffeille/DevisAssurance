@@ -151,10 +151,10 @@ public class FenetreSaisieVehicule extends JFrame implements ActionListener {
         }
 
 
-    private void checkBtn() {
-        boolean value = !cbxMarque.getSelectedItem().equals("Marque") && !cbxModele.getSelectedItem().equals("Modèle");
-        btnOK.setEnabled(value);
-    }
+//    private void checkBtn() {
+//        boolean value = !cbxMarque.getSelectedItem().equals("Marque") && !cbxModele.getSelectedItem().equals("Modèle");
+//        btnOK.setEnabled(value);
+//    }
 
 
 }
