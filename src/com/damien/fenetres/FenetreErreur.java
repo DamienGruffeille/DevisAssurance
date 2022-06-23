@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,14 +15,22 @@ public class FenetreErreur extends JFrame implements ActionListener {
     /**
      * The Btn ok.
      */
-    JButton btnOK = new JButton("OK");
+    private final JButton btnOK = new JButton("OK");
+    /**
+     * The Frame Width.
+     */
+    private static final int FRAME_WIDTH = 250;
+    /**
+     * The Frame Heigth.
+     */
+    private static final int FRAME_HEIGTH = 150;
 
     /**
      * Instantiates a new Fenetre erreur.
      *
      * @param message the message
      */
-    public FenetreErreur(String message) {
+    public FenetreErreur(final String message) {
         JLabel info = new JLabel(message);
 
         JPanel pan1 = new JPanel();
@@ -40,14 +48,14 @@ public class FenetreErreur extends JFrame implements ActionListener {
 
         // Définition des caractéristiques du frame
         this.pack();
-        this.setSize(250, 150);
+        this.setSize(FRAME_WIDTH, FRAME_HEIGTH);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public final void actionPerformed(final ActionEvent e) {
         if (e.getSource() == btnOK) {
             this.dispose();
         }

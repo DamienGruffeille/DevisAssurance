@@ -6,6 +6,10 @@ import java.io.*;
 
 public class fichierClient {
     protected static File fichierClient = new File("C://Users/AFPA/IdeaProjects/DevisAssurance/fichierClient.txt");
+
+    private fichierClient() {
+    }
+
     public static void ecritureFichierClient(Personne personne){
         // Déclaration du fichier client
 
@@ -44,6 +48,30 @@ public class fichierClient {
             reader.close();
 
         }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void modifierStatutFichierClient(Personne personne) {
+        String line;
+        StringBuffer sb = new StringBuffer();
+        int nbLinesRead = 0;
+
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fichierClient), "UTF8"));
+            while ((line = br.readLine()) != null) {
+                nbLinesRead++;
+                String[] values = line.split(",");
+                if (values[0].equals(personne.getNom())) {
+                    line = line.replace("Prospect", personne.getStatut());
+                }
+                sb.append(line + "\n");
+            }
+            br.close();
+            BufferedWriter out = new BufferedWriter(new FileWriter(fichierClient));
+            out.write(sb.toString());
+            out.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

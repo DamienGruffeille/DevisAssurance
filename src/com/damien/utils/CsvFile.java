@@ -4,8 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * The type Csv file.
@@ -16,6 +15,18 @@ public class CsvFile {
     private static ArrayList<String> listeModeles = new ArrayList<>();
     // HashMap permettant de récupérer la puissance d'un modèle sélectionné
     private static HashMap<String, String> puissance = new HashMap<>();
+
+//    public static SortedMap<String, HashMap<String, String>> getsMap() {
+//        return sMap;
+//    }
+//
+//    public static void setsMap(SortedMap<String, HashMap<String, String>> sMap) {
+//        CsvFile.sMap = sMap;
+//    }
+
+//    private static SortedMap<String, HashMap<String, String>> sMap = new TreeMap<>();
+//
+//    Set<String> keys = sMap.keySet();
 
     private CsvFile() {
     }
@@ -102,6 +113,25 @@ public class CsvFile {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+
+//        try {
+//            BufferedReader br = new BufferedReader(new FileReader(path));
+//            // TODO SortedMap avec clé = marque + valeur = tableau des modèles
+//            // TODO le tableau des modèles contiendra un MAP avec la puissance du modèle
+//            // si la marque n'existe pas -> créer une clé + un tableau vide
+//            while ((line = br.readLine()) != null) {
+//                String[] values = line.split(";");
+//                // Je mets le duo modèle/puissance CV dans un dico
+//                if (!sMap.containsKey(values[0])) {
+//                    sMap.put(values[0],puissance);
+//                }
+//                    puissance.put(values[1], values[2]);
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException ioe) {
+//            ioe.printStackTrace();
+//        }
 
     }
 }

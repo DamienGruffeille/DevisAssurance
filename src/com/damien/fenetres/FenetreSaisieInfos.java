@@ -39,6 +39,15 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
     private JButton btnEffacer = new JButton("Effacer");
 
     /**
+     * Gets jeune cond.
+     *
+     * @return the jeune cond
+     */
+    public static String getJeuneCond() {
+        return jeuneCond;
+    }
+
+    /**
      * Instantiates a new Fenetre saisie infos.
      */
     public FenetreSaisieInfos() {
@@ -126,15 +135,15 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
         // Gestion des boutons checkAccident et liste déroulante nbAccidents
         // en fonction de la sélection faite par user
         cbxNbAccidents.setEnabled(false);
-        checkAccidentOui.addActionListener(this);
-        checkAccidentNon.addActionListener(this);
+        checkAccidentOui.addActionListener(this::chkAccO);
+        checkAccidentNon.addActionListener(this::chkAccN);
 
         btnOk.addActionListener(this);
         btnEffacer.addActionListener(this);
 
-        checkJeuneConducteurOui.addActionListener(this);
-        checkJeuneConducteurNon.addActionListener(this);
-
+        // TODO bug on peut décocher le bouton non au lancement sans que oui soit coché
+        checkJeuneConducteurOui.addActionListener(event -> checkJeuneConducteurNon.setSelected(false));
+        checkJeuneConducteurNon.addActionListener(event -> checkJeuneConducteurOui.setSelected(false));
 
         pan1.add(lblNom);
         pan1.add(txtNom);
@@ -169,37 +178,18 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-    /**
-     * Gets jeune cond.
-     *
-     * @return the jeune cond
-     */
-    public static String getJeuneCond() {
-        return jeuneCond;
+    private void chkAccN(ActionEvent actionEvent) {
+        cbxNbAccidents.setEnabled(!checkCheckAccidentNon());
+        checkAccidentOui.setSelected(false);
+    }
+
+    private void chkAccO(ActionEvent actionEvent) {
+        cbxNbAccidents.setEnabled(checkCheckAccidentOui());
+        checkAccidentNon.setSelected(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Si checkAccidentOui est activée -> checkAccidentNon est désactivée
-        // Si checkAccidentOui est activée -> cbxNbAccidents est sélectionnable
-        if (e.getSource() == checkAccidentOui) {
-            cbxNbAccidents.setEnabled(checkCheckAccidentOui());
-            checkAccidentNon.setSelected(false);
-        }
-        // Si checkAccidentNon est activée -> checkAccidentOui est désactivée
-        // Si checkAccidentNon est activée -> cbxNbAccidents n'est pas sélectionnable
-        if (e.getSource() == checkAccidentNon) {
-            cbxNbAccidents.setEnabled(!checkCheckAccidentNon());
-            checkAccidentOui.setSelected(false);
-        }
-
-        if (e.getSource() == checkJeuneConducteurOui) {
-            checkJeuneConducteurNon.setSelected(false);
-        }
-        // TODO bug on peut décocher le bouton non au lancement sans que oui soit coché
-        if (e.getSource() == checkJeuneConducteurNon) {
-            checkJeuneConducteurOui.setSelected(false);
-        }
 
         if (e.getSource() == btnOk) {
 
@@ -231,7 +221,6 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
 
             fichierClient.ecritureFichierClient(personne);
 
-            String message = "Cette personne n'est pas assurable";
             if (CalculPoints.calculPoints(personne) >= 0) {
                 try {
                     CsvFile.lireFichierCsv();
@@ -241,6 +230,7 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
                 new FenetreSaisieVehicule(personne);
 
             } else {
+                String message = "Cette personne n'est pas assurable";
                 new FenetreErreur(message);
             }
             // TODO enregistrement de la personne dans fichier csv

@@ -79,8 +79,6 @@ public class FenetreSaisieVehicule extends JFrame implements ActionListener {
         cbxModele = new JComboBox<>(listeModeles);
         cbxModele.addActionListener(this);
 
-
-
         //btnOK.setEnabled(false);
         btnOK.addActionListener(this);
 
@@ -105,7 +103,7 @@ public class FenetreSaisieVehicule extends JFrame implements ActionListener {
         // Définition des caractéristiques du frame
         this.pack();
         this.setSize(400, 300);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
@@ -117,6 +115,7 @@ public class FenetreSaisieVehicule extends JFrame implements ActionListener {
         //TODO récupérer automatique les modèles d'une même marque
         if (e.getSource() == cbxMarque) {
             if (cbxMarque.getSelectedItem().equals("Peugeot")){
+                //cbxModele.addItem(String.valueOf(CsvFile.getsMap().get("Peugeot")));
                 cbxModele.removeAllItems();
                 cbxModele.addItem("208");
                 cbxModele.addItem("308");
@@ -149,12 +148,5 @@ public class FenetreSaisieVehicule extends JFrame implements ActionListener {
 
             }
         }
-
-
-//    private void checkBtn() {
-//        boolean value = !cbxMarque.getSelectedItem().equals("Marque") && !cbxModele.getSelectedItem().equals("Modèle");
-//        btnOK.setEnabled(value);
-//    }
-
 
 }
