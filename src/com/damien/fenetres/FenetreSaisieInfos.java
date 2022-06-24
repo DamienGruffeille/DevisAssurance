@@ -3,7 +3,7 @@ package com.damien.fenetres;
 import com.damien.entites.Personne;
 import com.damien.utils.CalculPoints;
 import com.damien.utils.CsvFile;
-import com.damien.utils.fichierClient;
+import com.damien.utils.FichierClient;
 
 import javax.swing.*;
 import java.awt.*;
@@ -219,7 +219,7 @@ public class FenetreSaisieInfos extends JFrame implements ActionListener {
                     nbAcc,
                     bonusFid);
 
-            fichierClient.ecritureFichierClient(personne);
+            FichierClient.ecritureFichierClient(personne);
 
             if (CalculPoints.calculPoints(personne) >= 0) {
                 try {

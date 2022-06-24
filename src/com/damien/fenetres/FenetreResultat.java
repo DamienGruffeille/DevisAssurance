@@ -1,7 +1,7 @@
 package com.damien.fenetres;
 
 import com.damien.entites.Personne;
-import com.damien.utils.fichierClient;
+import com.damien.utils.FichierClient;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -145,7 +145,7 @@ public class FenetreResultat extends JFrame implements ActionListener {
 
     private void btnSouscrireListener(final ActionEvent event) {
         personne.setStatut("Client");
-        fichierClient.modifierStatutFichierClient(personne);
+        FichierClient.modifierStatutFichierClient(personne);
         System.out.println(personne.getStatut());
     }
 
